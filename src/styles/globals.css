@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #2C3930;
 }
 
 .main {
@@ -10,6 +9,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #2C3930;
 }
 
 .container {
@@ -45,6 +45,8 @@
   padding: 30px;
   padding-right: 35px;
   cursor: default;
+  background-color: #2C3930;
+  text-overflow: ellipsis;
 }
 
 .refresh__icon {
@@ -54,6 +56,21 @@
   transform: translateY(-50%);
   cursor: pointer;
   color: white;
+}
+
+.copy__btn {
+  margin-left: 10px;
+  padding: 10px 20px;
+  color: white;
+  font-size: large;
+  border: 2px solid #3F4F44;
+  border-radius: 10px;
+  background-color: #2C3930
+}
+
+.pass__range__input__container {
+  display: flex;
+  gap: 30px;
 }
 
 .check__box__container{
