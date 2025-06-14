@@ -68,22 +68,141 @@
   background-color: #2C3930
 }
 
+.copy__btn:hover {
+  cursor: pointer;
+}
+
 .pass__range__input__container {
   display: flex;
   gap: 30px;
 }
 
-.check__box__container{
+.check__box__container {
   display: flex;
   gap: 30px;
 }
 
-.check__box__container label{
+.check__box__container label {
   font-size: 1.8rem;
   padding: 15px;
   color: #DCD7C9;
 }
 
-.check__box__container input[type="checkbox"]{
+.check__box__container input[type="checkbox"] {
   transform: scale(2);
 }
+
+/* auth Page CSS */
+.login__container {
+  background-color: #f6e9d9;
+  max-width: 600px;
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.login__form__container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__form__container .MuiTextField-root {
+  width: 70%;
+}
+
+.MuiInputBase-input {
+  margin: 0 !important;
+}
+
+.login__form__container button {
+  padding: 0.75rem;
+  background-color: #2C3930;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+}
+
+.forgotpassword__link {
+  width: 70%;
+  text-align: left;
+  margin-top: -15px;
+}
+
+.forgotpassword__link a {
+  text-decoration: none;
+  color: #333;
+
+}
+
+.login__form__container button:hover {
+  background-color: #333;
+}
+
+.auth__heading {
+  text-align: center;
+  color: #2C3930
+}
+
+.alert__err {
+  width: 70%;
+  text-align: start;
+  color: red;
+  margin: 0;
+  padding: 0;
+  margin-top: -15px;
+}
+
+/* Auth Links */
+.account__container {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.auth__link {
+  text-decoration: none;
+  color: #f6e9d9;
+}
+
+
+/* Profile */
+
+.profile__main{
+  height: inherit;
+  align-items: start;
+  width: 50%;
+
+}
+
+.profile__categories__container {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+}
+
+
+
+/* Media Queries */
+
+@media screen and (max-width: 540px) {
+  .login__container {
+    max-width: 300px;
+    height: 400px
+  }
+}
+
+@media screen and (min-wdth: 540px) {}
+
+@media screen and (min-width: 720px) {}
+
+@media screen and (min-width: 997px) {}
+
+@media screen and (min-width: 1200px) {}
