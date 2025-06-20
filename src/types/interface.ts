@@ -18,5 +18,12 @@ export interface AuthComponentProps {
 
 export interface ProfileComponentProps {
   heading: string;
-  description: string
+  description: string;
+}
+
+export interface TokenProps {
+  email: string;
+  exp: number;
+  iat: number;
+  role: string;
 }

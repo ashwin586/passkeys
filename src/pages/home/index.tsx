@@ -12,6 +12,8 @@ import Slider from "@mui/material/Slider";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Head from "next/head";
+// import { jwtDecode } from "jwt-decode";
+// import { TokenProps } from "@/types/interface";
 
 const App = () => {
   const [lowerCase, setLowerCase] = useState<boolean>(false);
@@ -24,10 +26,18 @@ const App = () => {
   );
   const passTextRef = useRef<HTMLInputElement | null>(null);
   const [toast, setToast] = useState<boolean>(false);
+  const [token, setToken] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const alphabets: string[] = APLHABETS.split("");
   const numbers: string[] = NUMBERS.split("");
   const specialChar: string[] = SPECIAL_CHARACTERS.split("");
+
+  useEffect(() => {
+    const token: string = localStorage.getItem("access-token") || "";
+    setToken(token);
+    setLoading(false);
+  }, []);
 
   let allChars: string[] = [];
   if (lowerCase)
@@ -87,6 +97,19 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lowerCase, upperCase, numeric, specialCharacter, rangeSliderValue]);
 
+  // useEffect(() => {
+  //   try {
+  //     const decoded: TokenProps = jwtDecode(token);
+  //     const now: number = Date.now() / 1000;
+  //     if (decoded.exp < now) {
+  //       localStorage.removeItem("access-token");
+  //       setToken("");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, [token]);
+
   const handleCopyPass = async () => {
     if (passTextRef.current) {
       await navigator.clipboard.writeText(passTextRef.current.value);
@@ -98,6 +121,8 @@ const App = () => {
     setToast(false);
   };
 
+  if (loading) return null;
+
   return (
     <React.Fragment>
       <Head>
@@ -107,14 +132,28 @@ const App = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="account__container">
-        <span>
-          {" "}
-          <Link className="auth__link" href={"/auth/login"}>Login</Link>
-        </span>{" "}
-        /{" "}
-        <span>
-          <Link className="auth__link" href={"/auth/register"}>Register</Link>
-        </span>
+        {token ? (
+          <span>
+            <Link href={"/profile"} className="auth__link">
+              Account
+            </Link>
+          </span>
+        ) : (
+          <>
+            <span>
+              {" "}
+              <Link className="auth__link" href={"/auth/login"}>
+                Login
+              </Link>
+            </span>{" "}
+            /{" "}
+            <span>
+              <Link className="auth__link" href={"/auth/register"}>
+                Register
+              </Link>
+            </span>
+          </>
+        )}
       </div>
       <div className="main">
         <div className="container">
