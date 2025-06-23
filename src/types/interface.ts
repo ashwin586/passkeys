@@ -27,3 +27,9 @@ export interface TokenProps {
   iat: number;
   role: string;
 }
+
+export type ToastType = "success" | "error" | "info" | "warning";
+
+export interface ToastInterface {
+  showToast: (message: string, severity?: ToastType) => void;
+}

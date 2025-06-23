@@ -6,14 +6,12 @@ import axios from "@/lib/axios";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { jwtDecode } from "jwt-decode";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
+import { useToast } from "@/context/ToastContext";
 
 const App = () => {
   const router = useRouter();
   const [allowRender, setAllowRender] = useState(false);
-  const [toast, setToast] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
+  const { showToast } = useToast();
 
   useEffect(() => {
     const token = localStorage.getItem("access-token");
@@ -43,8 +41,7 @@ const App = () => {
         const accessToken = response?.data?.token;
         const message: string = response?.data?.message;
         localStorage.setItem("access-token", accessToken);
-        setToast(true);
-        setSuccessMessage(message);
+        showToast(message, "success");
         setTimeout(() => {
           router.push("/home");
         }, 200);
@@ -54,9 +51,6 @@ const App = () => {
     }
   };
 
-  const handleClose = () => {
-    setToast(false);
-  };
 
   return (
     <>
@@ -71,18 +65,6 @@ const App = () => {
           <AuthComponent mode="login" submitHandler={onSubmit} />
         </div>
       )}
-      <Snackbar open={toast} autoHideDuration={3000} onClose={handleClose}>
-        <Alert
-          onClose={handleClose}
-          severity="success"
-          variant="filled"
-          sx={{
-            width: "100%",
-          }}
-        >
-          {successMessage}
-        </Alert>
-      </Snackbar>
     </>
   );
 };

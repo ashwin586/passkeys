@@ -3,10 +3,12 @@ import ProfileCategories from "@/components/ProfileCategories";
 import axios from "@/lib/axios";
 import { useRouter } from "next/router";
 import { AxiosError } from "axios";
+import { useToast } from "@/context/ToastContext";
 
 const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const router = useRouter();
+  const { showToast } = useToast();
 
   useEffect(() => {
     const accessToken = localStorage.getItem("access-token");
@@ -21,8 +23,9 @@ const App = () => {
         const response = await axios.get("/profile");
         console.log(response);
       } catch (error: unknown) {
-        console.log("profile component error:", error);
         if (error instanceof AxiosError && error?.response?.status === 401) {
+          const message = error?.response?.data?.message;
+          showToast(message, "error");
           router.push("/home");
         }
       }
