@@ -36,7 +36,6 @@ const App = () => {
   const onSubmit: SubmitHandler<authInterface> = async (data) => {
     try {
       const response = await axios.post("/login", data);
-      console.log(response);
       if (response.status === 200) {
         const accessToken = response?.data?.token;
         const message: string = response?.data?.message;

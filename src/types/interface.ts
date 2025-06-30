@@ -19,6 +19,7 @@ export interface AuthComponentProps {
 export interface ProfileComponentProps {
   heading: string;
   description: string;
+  onClick?: () => void;
 }
 
 export interface TokenProps {
@@ -32,4 +33,21 @@ export type ToastType = "success" | "error" | "info" | "warning";
 
 export interface ToastInterface {
   showToast: (message: string, severity?: ToastType) => void;
+}
+
+export interface User {
+  name: string;
+  email: string;
+  createdAt: string;
+}
+
+export interface ProfileInfo {
+  name: string;
+  email: string;
+  currentPassword: string;
+  newPassword: string;
+}
+
+export interface ApiError {
+  message: string;
 }

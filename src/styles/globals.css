@@ -175,13 +175,39 @@
 
 /* Profile */
 
-.profile__main{
+.account__details {
+  margin: 30px 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #f6e9d9;
+}
+
+.user__avatar {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.user__name {
+  text-transform: capitalize;
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.user__desc {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.profile__main {
   height: inherit;
-  align-items: start;
+  /* align-items: start; */
   width: 50%;
 }
 
-.profile__sub__categories{
+.profile__sub__categories {
   display: flex;
   gap: 10px;
   justify-content: space-evenly;
@@ -199,6 +225,44 @@
   cursor: pointer;
 }
 
+
+/* Profile/ManageAccount */
+.manage__acc {
+  margin-top: 50px;
+}
+
+.form__profile {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-top: 1em;
+}
+
+.profile__action__btn__sec {
+  text-align: end;
+}
+
+.profile__action__btn {
+  padding: 8px 20px;
+  margin: 0px 5px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+}
+
+.profile__action__btn#edit {
+  background-color: #007bff;
+}
+
+.profile__action__btn#cancel {
+  background-color: #f44336;
+}
+
+.profile__action__btn#save {
+  background-color: #28a745;
+}
 
 
 /* Media Queries */
