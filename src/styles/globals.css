@@ -4,12 +4,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-color-1: #2C3930;
+  --bg-color-2: #f6e9d9;
+  --bg-color-3: #333;
+  --border-color-1: #3F4F44;
+  --color-1: #DCD7C9;
+  --green-btn: #28a745;
+  --red-btn: #f44336;
+  --blue-btn: #007bff;
+}
+
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #2C3930;
+  background-color: var(--bg-color-1);
 }
 
 .container {
@@ -26,7 +37,7 @@
 }
 
 .text {
-  color: #DCD7C9;
+  color: var(--color-1);
 }
 
 .input__box__container {
@@ -35,17 +46,17 @@
 }
 
 .input__box {
-  border: 2px solid #3F4F44;
+  border: 2px solid var(--border-color-1);
   outline: none;
   border-radius: 10px;
   height: 40px;
   width: 500px;
   font-size: 1.5rem;
-  color: #DCD7C9;
+  color: var(--color-1);
   padding: 30px;
   padding-right: 35px;
   cursor: default;
-  background-color: #2C3930;
+  background-color: var(--bg-color-1);
   text-overflow: ellipsis;
 }
 
@@ -63,9 +74,9 @@
   padding: 10px 20px;
   color: white;
   font-size: large;
-  border: 2px solid #3F4F44;
+  border: 2px solid var(--border-color-1);
   border-radius: 10px;
-  background-color: #2C3930
+  background-color: var(--bg-color-1)
 }
 
 .copy__btn:hover {
@@ -85,7 +96,7 @@
 .check__box__container label {
   font-size: 1.8rem;
   padding: 15px;
-  color: #DCD7C9;
+  color: var(--color-1);
 }
 
 .check__box__container input[type="checkbox"] {
@@ -94,7 +105,7 @@
 
 /* auth Page CSS */
 .login__container {
-  background-color: #f6e9d9;
+  background-color: var(--bg-color-2);
   max-width: 600px;
   width: 100%;
   height: 500px;
@@ -120,8 +131,8 @@
 
 .login__form__container button {
   padding: 0.75rem;
-  background-color: #2C3930;
-  color: #fff;
+  background-color: var(--bg-color-1);
+  color: var(--bg-color-2);
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -138,17 +149,17 @@
 
 .forgotpassword__link a {
   text-decoration: none;
-  color: #333;
+  color: var(--bg-color-3);
 
 }
 
 .login__form__container button:hover {
-  background-color: #333;
+  background-color: var(--bg-color-3);
 }
 
 .auth__heading {
   text-align: center;
-  color: #2C3930
+  color: var(--bg-color-1)
 }
 
 .alert__err {
@@ -169,7 +180,7 @@
 
 .auth__link {
   text-decoration: none;
-  color: #f6e9d9;
+  color: var(--bg-color-2);
 }
 
 
@@ -181,7 +192,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  color: #f6e9d9;
+  color: var(--bg-color-2);
 }
 
 .user__avatar {
@@ -220,8 +231,8 @@
   height: auto;
   border-radius: 10px;
   padding: 10px 20px;
-  border: 2px solid #f6e9d9;
-  color: #f6e9d9;
+  border: 2px solid var(--bg-color-2);
+  color: var(--bg-color-2);
   cursor: pointer;
 }
 
@@ -242,26 +253,76 @@
   text-align: end;
 }
 
-.profile__action__btn {
+.action__btn {
   padding: 8px 20px;
   margin: 0px 5px;
   border-radius: 10px;
   border: none;
   outline: none;
   cursor: pointer;
-  color: white;
+  color: var(--bg-color-2)
 }
 
-.profile__action__btn#edit {
-  background-color: #007bff;
+.action__btn#edit {
+  background-color: var(--blue-btn);
 }
 
-.profile__action__btn#cancel {
+.action__btn#cancel {
+  background-color: var(--red-btn);
+}
+
+.action__btn#save {
+  background-color: var(--green-btn);
+}
+
+/* Manage Passwords */
+.manage__pass__navbar {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2em;
+}
+
+/* .pass__search {
   background-color: #f44336;
+} */
+
+.pass__btn__sec {
+  margin: auto 0;
 }
 
-.profile__action__btn#save {
-  background-color: #28a745;
+.action__btn#add {
+  background-color: var(--blue-btn);
+}
+
+.password__card__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+  justify-content: space-evenly;
+}
+
+/* Password Card Component Css */
+.card__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid var(--bg-color-2);
+  border-radius: 10px;
+  width: 300px;
+  padding: 10px;
+  gap: 10px;
+}
+
+.card__heading {
+  width: 80%;
+  color: var(--color-1);
+}
+
+.card__action__btns {
+  display: flex;
+  width: 85%;
+  justify-content: end;
 }
 
 

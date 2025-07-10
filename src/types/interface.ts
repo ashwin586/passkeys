@@ -5,6 +5,12 @@ export interface authInterface {
   password: string;
 }
 
+export interface addPassword {
+  appName: string;
+  userName: string;
+  password: string;
+}
+
 export interface inputProps {
   label: string;
   id: string;
@@ -14,6 +20,12 @@ export interface inputProps {
 export interface AuthComponentProps {
   mode: string;
   submitHandler: SubmitHandler<authInterface>;
+}
+
+export interface AddPasswordProps {
+  open: boolean;
+  handleClose: () => void;
+  submitHandler: SubmitHandler<addPassword>;
 }
 
 export interface ProfileComponentProps {

@@ -76,6 +76,7 @@ const App = () => {
               <ProfileCategories
                 heading={"Manage Passwords"}
                 description={"This is to manage the password"}
+                onClick={() => router.push("/profile/managepasswords")}
               />
             </div>
           </div>

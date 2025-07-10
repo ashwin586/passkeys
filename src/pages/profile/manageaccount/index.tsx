@@ -215,7 +215,7 @@ const App = () => {
               <div className="profile__action__btn__sec">
                 <button
                   id="edit"
-                  className="profile__action__btn"
+                  className="action__btn"
                   type="button"
                   onClick={() => setIsEdit(true)}
                 >
@@ -226,7 +226,7 @@ const App = () => {
               <div className="profile__action__btn__sec">
                 <button
                   id="cancel"
-                  className="profile__action__btn"
+                  className="action__btn"
                   type="button"
                   onClick={() => setIsEdit(false)}
                 >
@@ -234,7 +234,7 @@ const App = () => {
                 </button>
                 <button
                   id="save"
-                  className="profile__action__btn save"
+                  className="action__btn save"
                   type="submit"
                 >
                   Save
