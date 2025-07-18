@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import PasswordCard from "@/components/PasswordCard";
@@ -6,15 +6,31 @@ import AddPassword from "@/components/AddPassword";
 import { addPassword } from "@/types/interface";
 import { AxiosError } from "axios";
 import { ApiError } from "next/dist/server/api-utils";
+import { useToast } from "@/context/ToastContext";
+import axios from "@/lib/axios";
+import { useRouter } from "next/router";
 
 const App = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const router = useRouter();
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("access-token");
+    if (!accessToken) {
+      router.push("/home");
+      return;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleClose = () => setOpen(false);
 
   const onSubmit: SubmitHandler<addPassword> = async (data) => {
     try {
-      console.log(data)
+      const response = await axios.post("/profile/managePasswords", data);
+      if (response.status === 200)
+        showToast(response?.data?.message, "success");
     } catch (error) {
       const err = error as AxiosError<ApiError>;
       console.log(err);

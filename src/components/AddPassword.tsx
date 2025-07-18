@@ -52,6 +52,21 @@ const AddPassword: React.FC<AddPasswordProps> = ({
           <TextField
             autoFocus
             margin="dense"
+            id="url"
+            label="URL *"
+            type="text"
+            fullWidth
+            variant="standard"
+            {...register("url", {
+              required: "URL is required",
+            })}
+            error={!!errors.userName}
+            helperText={errors.userName?.message}
+          />
+
+          <TextField
+            autoFocus
+            margin="dense"
             id="userName"
             label="Username or Email *"
             type="text"

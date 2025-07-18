@@ -7,6 +7,7 @@ export interface authInterface {
 
 export interface addPassword {
   appName: string;
+  url: string;
   userName: string;
   password: string;
 }
