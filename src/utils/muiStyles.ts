@@ -49,7 +49,8 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
       borderColor: "#2D3843",
     }),
   },
-  "& .MuiInputBase-input.Mui-disabled": {
+  "&.Mui-disabled .MuiInputBase-input": {
     color: "#f6e9d9 !important",
+    WebkitTextFillColor: "#f6e9d9"
   },
 }));

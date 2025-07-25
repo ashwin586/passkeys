@@ -1,22 +1,87 @@
+import { UserPasswords } from "@/types/interface";
 import { BootstrapInput } from "@/utils/muiStyles";
-import React from "react";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import React, { useState } from "react";
 
-const PasswordCard = () => {
+const PasswordCard = ({ name, url, userName, password }: UserPasswords) => {
+  const [visibility, setVisibility] = useState<boolean>(false);
+
+  const handleVisibility = () => setVisibility(!visibility);
   return (
     <>
       <div className="card__wrapper">
         <div className="card__heading">
-          <h2>Heading</h2>
+          <h2>{name}</h2>
         </div>
-        <BootstrapInput defaultValue="App Name" id="bootstrap-input" disabled />
-        <BootstrapInput defaultValue="User Name" id="bootstrap-input" disabled />
-        <BootstrapInput defaultValue="Password" id="bootstrap-input" disabled />
+        <BootstrapInput
+          defaultValue="URL"
+          value={url}
+          id="bootstrap-input"
+          disabled
+        />
+        <div className="input__wrapper">
+          <BootstrapInput
+            defaultValue="User Name"
+            value={userName}
+            id="bootstrap-input-username"
+            disabled
+          />
+          <ContentCopyIcon className="copy__icon" />
+        </div>
+
+        <div className="input__wrapper">
+          <BootstrapInput
+            defaultValue="Password"
+            value={password}
+            id="bootstrap-input-password"
+            disabled
+            type={!visibility ? "password" : "text"}
+          />
+          {!visibility ? (
+            <VisibilityIcon
+              onClick={handleVisibility}
+              className="visibility__icon"
+            />
+          ) : (
+            <VisibilityOffIcon
+              onClick={handleVisibility}
+              className="visibility__icon"
+            />
+          )}
+          <ContentCopyIcon className="copy__icon" />
+        </div>
         <div className="card__action__btns">
-          <button className="action__btn" id="save">
-            edit
+          <button
+            className="action__btn"
+            id="save"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "5px",
+              textAlign: "center",
+            }}
+          >
+            <EditIcon fontSize={"small"} />
+            Edit
           </button>
-          <button className="action__btn" id="cancel">
-            delete
+          <button
+            className="action__btn"
+            id="cancel"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "5px",
+              textAlign: "center",
+            }}
+          >
+            <DeleteIcon fontSize={"small"} />
+            Delete
           </button>
         </div>
       </div>

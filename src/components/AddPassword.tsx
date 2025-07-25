@@ -9,6 +9,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { addPassword, AddPasswordProps } from "@/types/interface";
 import { popupModalStyle } from "@/utils/muiStyles";
+import { useEffect } from "react";
 
 const AddPassword: React.FC<AddPasswordProps> = ({
   open,
@@ -18,8 +19,26 @@ const AddPassword: React.FC<AddPasswordProps> = ({
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors },
-  } = useForm<addPassword>();
+  } = useForm<addPassword>({
+    defaultValues: {
+      appName: "",
+      url: "",
+      userName: "",
+      password: "",
+    },
+  });
+
+  useEffect(() => {
+    reset({
+      appName: "",
+      url: "",
+      userName: "",
+      password: "",
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   return (
     <Dialog open={open} onClose={handleClose} sx={popupModalStyle}>
@@ -60,8 +79,8 @@ const AddPassword: React.FC<AddPasswordProps> = ({
             {...register("url", {
               required: "URL is required",
             })}
-            error={!!errors.userName}
-            helperText={errors.userName?.message}
+            error={!!errors.url}
+            helperText={errors.url?.message}
           />
 
           <TextField

@@ -3,7 +3,7 @@ import { SubmitHandler } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import PasswordCard from "@/components/PasswordCard";
 import AddPassword from "@/components/AddPassword";
-import { addPassword } from "@/types/interface";
+import { addPassword, UserPasswords } from "@/types/interface";
 import { AxiosError } from "axios";
 import { ApiError } from "next/dist/server/api-utils";
 import { useToast } from "@/context/ToastContext";
@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 
 const App = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [credentials, setCredentials] = useState<UserPasswords[] | null>(null);
   const router = useRouter();
   const { showToast } = useToast();
 
@@ -21,6 +22,19 @@ const App = () => {
       router.push("/home");
       return;
     }
+
+    const storedCredentials = async () => {
+      try {
+        const response = await axios.get("/profile/managePasswords");
+        const userPasswords = response?.data?.passwords;
+        setCredentials(userPasswords);
+      } catch (error) {
+        const err = error as AxiosError;
+        console.log(err);
+      }
+    };
+
+    storedCredentials();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -34,6 +48,8 @@ const App = () => {
     } catch (error) {
       const err = error as AxiosError<ApiError>;
       console.log(err);
+    } finally {
+      handleClose();
     }
   };
 
@@ -76,29 +92,30 @@ const App = () => {
               </button>
             </div>
           </div>
-          <div className="password__card__container">
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-            <PasswordCard />
-          </div>
+          {credentials && credentials?.length > 0 ? (
+            <div className="password__card__container">
+              {credentials?.map((creds: UserPasswords, index: number) => (
+                <PasswordCard
+                  key={index}
+                  name={creds.name}
+                  url={creds.url}
+                  userName={creds?.userName}
+                  password={creds?.password}
+                />
+              ))}
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
-      {open && (
-        <AddPassword
-          open={open}
-          handleClose={handleClose}
-          submitHandler={onSubmit}
-        />
-      )}
+      {/* {open && ( */}
+      <AddPassword
+        open={open}
+        handleClose={handleClose}
+        submitHandler={onSubmit}
+      />
+      {/* )} */}
     </>
   );
 };

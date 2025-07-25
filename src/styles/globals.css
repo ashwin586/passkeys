@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Bitter", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 :root {
@@ -299,7 +303,7 @@
   flex-wrap: wrap;
   gap: 1em;
   margin-top: 1em;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
 /* Password Card Component Css */
@@ -323,6 +327,29 @@
   display: flex;
   width: 85%;
   justify-content: end;
+}
+
+.input__wrapper {
+  position: relative;
+  width: 85%;
+}
+
+.copy__icon {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--color-1);
+}
+
+.visibility__icon {
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--color-1);
 }
 
 

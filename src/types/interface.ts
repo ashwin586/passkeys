@@ -64,3 +64,10 @@ export interface ProfileInfo {
 export interface ApiError {
   message: string;
 }
+
+export interface UserPasswords {
+  name: string;
+  url: string;
+  userName: string;
+  password: string;
+}
