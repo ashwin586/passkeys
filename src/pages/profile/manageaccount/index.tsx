@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useToast } from "@/context/ToastContext";
 import axios from "@/lib/axios";
 import { AxiosError } from "axios";
+import { textFieldStyles } from "@/utils/muiStyles";
 
 const App = () => {
   // const [token, setToken] = useState<string | undefined>("");
@@ -79,38 +80,6 @@ const App = () => {
         showToast(data.message, "error");
       }
     }
-  };
-
-  const textFieldStyles = {
-    "& .MuiOutlinedInput-root": {
-      color: "#f6e9d9", // Input text color
-      "& fieldset": {
-        borderColor: "#f6e9d9", // Default border
-      },
-      "&:hover fieldset": {
-        borderColor: "#f6e9d9", // Border on hover
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#f6e9d9", // Border on focus
-      },
-      "&.Mui-disabled": {
-        opacity: 1,
-        color: "#bfae99", // Input text color when disabled
-        "& fieldset": {
-          borderColor: "#bfae99", // Border color when disabled
-        },
-      },
-    },
-    "& .MuiInputBase-input.Mui-disabled": {
-      color: "#bfae99 !important", // ensures fallback
-      WebkitTextFillColor: "#bfae99 !important", // ⬅ fixes the override issue
-    },
-    "& .MuiInputLabel-root": {
-      color: "#f6e9d9", // Label color
-    },
-    "& .MuiInputLabel-root.Mui-focused": {
-      color: "#f6e9d9", // Label color on focus
-    },
   };
 
   return (

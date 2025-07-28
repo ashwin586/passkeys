@@ -22,8 +22,8 @@
 .main {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  /* align-items: center; */
+  min-height: 100vh;
   background-color: var(--bg-color-1);
 }
 
@@ -32,7 +32,8 @@
   flex-direction: column;
   gap: 20px;
   text-align: center;
-  align-items: center;
+  /* align-items: center; */
+  margin: auto
 }
 
 .heading-1 {

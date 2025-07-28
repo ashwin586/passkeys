@@ -51,6 +51,38 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
   "&.Mui-disabled .MuiInputBase-input": {
     color: "#f6e9d9 !important",
-    WebkitTextFillColor: "#f6e9d9"
+    WebkitTextFillColor: "#f6e9d9",
   },
 }));
+
+export const textFieldStyles = {
+  "& .MuiOutlinedInput-root": {
+    color: "#f6e9d9",
+    "& fieldset": {
+      borderColor: "#f6e9d9", 
+    },
+    "&:hover fieldset": {
+      borderColor: "#f6e9d9", 
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#f6e9d9", 
+    },
+    "&.Mui-disabled": {
+      opacity: 1,
+      color: "#bfae99", 
+      "& fieldset": {
+        borderColor: "#bfae99", 
+      },
+    },
+  },
+  "& .MuiInputBase-input.Mui-disabled": {
+    color: "#bfae99 !important", 
+    WebkitTextFillColor: "#bfae99 !important",
+  },
+  "& .MuiInputLabel-root": {
+    color: "#f6e9d9", 
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "#f6e9d9", 
+  },
+};

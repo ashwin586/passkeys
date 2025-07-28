@@ -15,6 +15,7 @@ const AddPassword: React.FC<AddPasswordProps> = ({
   open,
   handleClose,
   submitHandler,
+  selectedCredential,
 }) => {
   const {
     handleSubmit,
@@ -23,19 +24,19 @@ const AddPassword: React.FC<AddPasswordProps> = ({
     formState: { errors },
   } = useForm<addPassword>({
     defaultValues: {
-      appName: "",
-      url: "",
-      userName: "",
-      password: "",
+      name: selectedCredential?.name || "",
+      url: selectedCredential?.url || "",
+      userName: selectedCredential?.userName || "",
+      password: selectedCredential?.password || "",
     },
   });
 
   useEffect(() => {
     reset({
-      appName: "",
-      url: "",
-      userName: "",
-      password: "",
+      name: selectedCredential?.name || "",
+      url: selectedCredential?.url || "",
+      userName: selectedCredential?.userName || "",
+      password: selectedCredential?.password || "",
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
@@ -52,20 +53,20 @@ const AddPassword: React.FC<AddPasswordProps> = ({
           <TextField
             autoFocus
             margin="dense"
-            id="appName"
+            id="name"
             label="App Name *"
             type="text"
             fullWidth
             variant="standard"
-            {...register("appName", {
+            {...register("name", {
               required: "App Name is required",
               minLength: {
                 value: 1,
                 message: "Atleast one character is required.",
               },
             })}
-            error={!!errors.appName}
-            helperText={errors.appName?.message}
+            error={!!errors.name}
+            helperText={errors.name?.message}
           />
 
           <TextField

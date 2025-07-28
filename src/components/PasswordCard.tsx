@@ -7,13 +7,21 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useState } from "react";
 
-const PasswordCard = ({ name, url, userName, password }: UserPasswords) => {
+const PasswordCard = ({
+  id,
+  name,
+  url,
+  userName,
+  password,
+  handleEditButton,
+  handleDeleteButton,
+}: UserPasswords) => {
   const [visibility, setVisibility] = useState<boolean>(false);
 
   const handleVisibility = () => setVisibility(!visibility);
   return (
     <>
-      <div className="card__wrapper">
+      <div className="card__wrapper" key={id}>
         <div className="card__heading">
           <h2>{name}</h2>
         </div>
@@ -65,6 +73,7 @@ const PasswordCard = ({ name, url, userName, password }: UserPasswords) => {
               gap: "5px",
               textAlign: "center",
             }}
+            onClick={handleEditButton}
           >
             <EditIcon fontSize={"small"} />
             Edit
@@ -79,6 +88,7 @@ const PasswordCard = ({ name, url, userName, password }: UserPasswords) => {
               gap: "5px",
               textAlign: "center",
             }}
+            onClick={handleDeleteButton}
           >
             <DeleteIcon fontSize={"small"} />
             Delete

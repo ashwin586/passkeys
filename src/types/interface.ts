@@ -6,7 +6,8 @@ export interface authInterface {
 }
 
 export interface addPassword {
-  appName: string;
+  id: string;
+  name: string;
   url: string;
   userName: string;
   password: string;
@@ -27,6 +28,7 @@ export interface AddPasswordProps {
   open: boolean;
   handleClose: () => void;
   submitHandler: SubmitHandler<addPassword>;
+  selectedCredential?: addPassword | null
 }
 
 export interface ProfileComponentProps {
@@ -66,8 +68,11 @@ export interface ApiError {
 }
 
 export interface UserPasswords {
+  id: string;
   name: string;
   url: string;
   userName: string;
   password: string;
+  handleEditButton?: () => void;
+  handleDeleteButton?: () => void;
 }
